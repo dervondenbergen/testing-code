@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title Text Transformation
+    
+    link(rel="stylesheet" href="style.css")
+    
+  body
+    h1 Text Transformation
+    p To use this tool, just input the text in the field below, and click on submit.
+    
+    if error
+      p.error= error
+      
+    form(method="POST" action="/")
+      textarea(class="input" name="input")= original
+      br
+      select(name="operation")
+      
+        each name, operator in options
+          if operation == operator
+            option(value="#{operator}" selected)= name
+          else
+            option(value="#{operator}")= name
+    
+      input(type="submit")
+      br
+      textarea(class="output" readonly="readonly")= converted
+      
+      script(src="scripts.js")
